@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
+import { StoreModule } from '@ngrx/store';
+import { reducerProduct } from './product/product.ngrx';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,10 @@ import { ProductComponent } from './product/product.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({
+      products: reducerProduct
+    }, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
