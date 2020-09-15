@@ -15,7 +15,7 @@ export class ProductComponent implements OnInit {
   public products$: Observable<any>
   public productForm = new FormGroup({
     name: new FormControl(''),
-    price: new FormControl(0),
+    price: new FormControl(''),
     description: new FormControl(''),
   })
 
@@ -28,11 +28,7 @@ export class ProductComponent implements OnInit {
 
   add() {
     this.store.dispatch(add({payload: {...this.productForm.value}}))
-    this.productForm = new FormGroup({
-      name: new FormControl(''),
-      price: new FormControl(0),
-      description: new FormControl(''),
-    })
+    this.productForm.reset()
   }
 
 }
