@@ -7,6 +7,8 @@ import { ProductComponent } from './product/product.component';
 import { StoreModule } from '@ngrx/store';
 import { reducerProduct } from './product/product.ngrx';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +17,7 @@ import { reducerProduct } from './product/product.ngrx';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({
       products: reducerProduct
     }, {})
