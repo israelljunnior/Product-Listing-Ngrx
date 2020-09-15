@@ -1,3 +1,19 @@
+<form [formGroup]="productForm" (ngSubmit)="add()">
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    Price:
+    <input type="text" formControlName="price">
+  </label>
+  <label>
+    Description:
+    <input type="text" formControlName="description">
+  </label>
+  <button submit="add()">Add</button>
+</form>
 <table>
     <tr>
       <th>Name</th>
@@ -6,7 +22,7 @@
     </tr>
     <tr *ngFor="let product of (products$ | async).products; index as i">
       <td>{{ product.name }}</td>
-      <td>{{ product.price }}</td>
+      <td>{{ product.price | currency: 'USD'}}</td>
       <td>{{ product.description }}</td>
     </tr>
 </table>

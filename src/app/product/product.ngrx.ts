@@ -9,19 +9,26 @@ const INITIAL_STATE = {
 export const list = createAction(
     ProductActionTypes.LIST
 )
+export const add = createAction(
+    ProductActionTypes.ADD,
+    props<{payload: any}>()
+)
 const listProduct = [
     {   
         id: 1,
         name: "Rtx 3090",
-        price: 10000
+        price: 10000,
+        description: "Quero muitíssimo"
     },{
         id: 2,
         name: "Rtx 3080",
-        price: 5000 
+        price: 5000,
+        description: "Quero Pakas"
     },{
         id: 3,
         name: "Rtx 3070",
-        price: 3500
+        price: 3500,
+        description: "Quero muito"
     }
 ]
 export const reducerProduct = createReducer(
@@ -29,6 +36,10 @@ export const reducerProduct = createReducer(
     on(list, (state, action) => ({
         ...state,
         products: [...state.products, ...listProduct]
+    })),
+    on(add, (state, action) => ({
+        ...state,
+        products: [...state.products, action.payload]
     }))
 )
 
