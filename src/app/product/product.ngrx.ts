@@ -13,6 +13,10 @@ export const add = createAction(
     ProductActionTypes.ADD,
     props<{payload: any}>()
 )
+export const remove = createAction(
+    ProductActionTypes.REMOVE,
+    props<{payload: any}>()
+)
 const listProduct = [
     {   
         id: 1,
@@ -40,6 +44,10 @@ export const reducerProduct = createReducer(
     on(add, (state, action) => ({
         ...state,
         products: [...state.products, action.payload]
+    })),
+    on(remove, (state, action) => ({
+        ...state,
+        products: [...state.products.filter(product =>  product.id != action.payload)]
     }))
 )
 

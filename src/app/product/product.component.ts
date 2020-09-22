@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './product.model';
 import { Observable, timer, of } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { list, add } from './product.ngrx';
+import { list, add, remove } from './product.ngrx';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -27,8 +27,12 @@ export class ProductComponent implements OnInit {
   }
 
   add() {
-    this.store.dispatch(add({payload: {...this.productForm.value}}))
+    this.store.dispatch(add({payload: {id: Date.now(), ...this.productForm.value}}))
     this.productForm.reset()
+  }
+  
+  remove(id) {
+    this.store.dispatch(remove({payload: id}))
   }
 
 }
